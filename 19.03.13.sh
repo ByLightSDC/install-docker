@@ -407,9 +407,9 @@ do_install() {
 				$sh_c "$pkg_manager install -y -q $pre_reqs"
 				$sh_c "$config_manager --add-repo $yum_repo"
 				
-				#jrw - added sed. replaces 7Server with 7 for rhel 7.5
-				#could be done so it doesn't do this for all rhel releases
-                                sed -i 's/$releasever/7/g' /etc/yum.repos.d/docker-ce.repo
+				#jrw - added sed. replaces 7Server with 7 
+                                #sed -i 's/$releasever/7/g' /etc/yum.repos.d/docker-ce.repo
+				yum-config-manager --setopt="docker-ce-stable.baseurl=https://download.docker.com/linux/centos/7/x86_64/stable" --save
 				
 				if [ "$CHANNEL" != "stable" ]; then
 					echo "Info: Enabling channel '$CHANNEL' for docker-ce repo"
