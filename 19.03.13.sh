@@ -408,6 +408,7 @@ do_install() {
 				$sh_c "$config_manager --add-repo $yum_repo"
 				
 				#jrw - added sed. replaces 7Server with 7 
+				#https://github.com/rancher/rancher/issues/29246
                                 sed -i 's/$releasever/7/g' /etc/yum.repos.d/docker-ce.repo
 				#yum-config-manager --setopt="docker-ce-stable.baseurl=https://download.docker.com/linux/centos/7/x86_64/stable" --save
 				
